@@ -4,7 +4,7 @@ import { LanguageCode } from "./languages";
 
 export const AUTO_DETECT = "auto";
 
-export type SimpleTranslateResult = {
+export type TranslateSelection = {
   originalText: string;
   translatedText: string;
   pronunciation: string;
@@ -14,7 +14,7 @@ export type SimpleTranslateResult = {
 
 export async function simpleTranslate(
   options: { langFrom: LanguageCode; langTo: LanguageCode }
-): Promise<SimpleTranslateResult> {
+): Promise<TranslateSelection> {
   const selectedText = await getSelectedText().catch(() => "");
   const text = selectedText || "";
   const isAutoDetect = options.langFrom === AUTO_DETECT;
